@@ -6,7 +6,7 @@
 /*   By: mogawa <mogawa@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 16:18:48 by mogawa            #+#    #+#             */
-/*   Updated: 2023/05/07 22:40:48 by mogawa           ###   ########.fr       */
+/*   Updated: 2023/05/24 16:39:43 by mogawa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,12 @@ static size_t	ft_putstr_arr(char **res, char const *str, size_t *n, char c)
 		return (cnt);
 }
 
-//array of strings obtained by splitting 's' by delimiter 'c'
-//! FREE必要 ｓの文字列を分割記号ｃに分けて小配列に格納し、親配列をリターン
+/*
+引数| 文字列（char const *s）/ 分割記号文字（char c）
+戻り値| 親配列へのポインタ（NULL止めされている）
+フリー| 必要
+機能| 文字列を分割記号文字によって分割し、二次元文字列の親配列を返す
+*/
 char	**ft_split(char const *s, char c)
 {
 	char		**res;
@@ -103,7 +107,7 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	str = s;
 	nbr_c = ft_cntchar(s, c);
-	res = malloc(sizeof(char *) * (nbr_c + 1));
+	res = ft_calloc((nbr_c + 1), sizeof(char *));
 	if (res == NULL)
 		return (NULL);
 	res[nbr_c] = NULL;

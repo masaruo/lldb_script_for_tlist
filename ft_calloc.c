@@ -6,14 +6,18 @@
 /*   By: mogawa <mogawa@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 15:16:40 by mogawa            #+#    #+#             */
-/*   Updated: 2023/05/09 12:16:47 by mogawa           ###   ########.fr       */
+/*   Updated: 2023/05/24 11:49:09 by mogawa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-// alloc mem 'size' * 'count' filled with value zero
-//!FREE必要 0埋めしたメモリーを'size' * 'count'分確保
+/*
+引数| カウント:count＆カウントあたりのサイズ:size_t size
+戻り値| メモリー領域へのポインタ
+フリー| 必要
+機能| 0埋めしたメモリーを'size' x 'count'分確保
+*/
 void	*ft_calloc(size_t count, size_t size)
 {
 	void	*heap;

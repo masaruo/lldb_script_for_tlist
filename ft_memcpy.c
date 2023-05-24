@@ -6,13 +6,18 @@
 /*   By: mogawa <mogawa@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 11:07:49 by mogawa            #+#    #+#             */
-/*   Updated: 2023/01/23 14:10:14 by mogawa           ###   ########.fr       */
+/*   Updated: 2023/05/24 15:26:14 by mogawa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-// copies n bytes from src to dest and returns value of dest. 
+/*
+引数| コピー先（void *dst） / コピー元(const void *src) / サイズ(size_t n)
+戻り値| コピー先へのポインタ
+フリー| 不要
+機能| 指定バイト分をコピー先にコピー。コピー先とコピー元が重複する場合にはft_memmoveを使用
+*/
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
 	unsigned char		*pdest;

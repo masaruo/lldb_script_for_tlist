@@ -6,7 +6,7 @@
 /*   By: mogawa <mogawa@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 11:11:31 by mogawa            #+#    #+#             */
-/*   Updated: 2023/05/07 22:41:02 by mogawa           ###   ########.fr       */
+/*   Updated: 2023/05/24 16:41:20 by mogawa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,12 @@ void	ft_putnbr_arr(int n, char *arr, size_t *cnt)
 	}
 }
 
-// returns a string representing provided int 'n'. 
-// !FREE必要 数値型ｎを文字列に格納して返す。
+/*
+引数| INT整数:n
+戻り値| 文字列の数値。失敗すればNULL
+フリー| 必要
+機能| INT型の数値をCHAR型の数値に変更
+*/
 char	*ft_itoa(int n)
 {
 	size_t		digits;
@@ -68,7 +72,7 @@ char	*ft_itoa(int n)
 
 	digits = 0;
 	digits = ft_putnbr_cnt(n);
-	res = malloc(sizeof(char) * (digits + 1));
+	res = ft_calloc((digits + 1), sizeof(char));
 	if (res == NULL)
 		return (NULL);
 	cnt = 0;

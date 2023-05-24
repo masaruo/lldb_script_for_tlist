@@ -6,7 +6,7 @@
 /*   By: mogawa <mogawa@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 14:50:40 by mogawa            #+#    #+#             */
-/*   Updated: 2023/05/07 22:28:33 by mogawa           ###   ########.fr       */
+/*   Updated: 2023/05/24 11:42:20 by mogawa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,12 @@ static const char	*ft_prefix(const char *s, int *is_minus)
 	return (s);
 }
 
-// CHAR型の数値をINT型の数値に変換。前のスペースは無視
+/*
+引数| CHAR型の数値(char *str)
+戻り値| INT型に変換された数値
+フリー| 不要
+機能| CHAR型の数値をINT型の数値に変換。前のスペースは無視
+*/
 int	ft_atoi(const char *str)
 {
 	int			is_minus;
