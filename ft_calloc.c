@@ -6,7 +6,7 @@
 /*   By: mogawa <mogawa@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 15:16:40 by mogawa            #+#    #+#             */
-/*   Updated: 2023/05/24 20:04:15 by mogawa           ###   ########.fr       */
+/*   Updated: 2023/05/25 10:20:12 by mogawa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	*ft_calloc(size_t count, size_t size)
 
 	if (count == 0 || size == 0)
 		return (NULL);
-	if (count > SIZE_MAX / size)
+	if (SIZE_MAX / size < count)
 		return (NULL);
 	amount = count * size;
 	heap = malloc(amount);
