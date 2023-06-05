@@ -6,7 +6,7 @@
 #    By: mogawa <mogawa@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/11 16:04:53 by mogawa            #+#    #+#              #
-#    Updated: 2023/06/05 15:29:02 by mogawa           ###   ########.fr        #
+#    Updated: 2023/06/05 15:32:25 by mogawa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ FILES		=	ft_isalpha ft_isdigit ft_isalnum ft_isascii ft_isprint ft_strlen ft_mem
 SRCS_DIR	=	./
 SRCS		=	$(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES)))
 OBJS		=	$(SRCS:.c=.o)
-INC			=	./includes/
+INC			=	./
 
 ifdef WITH_DEBUG
 CFLAGS = -Wall -g3 -O0 -fsanitize=address
