@@ -6,7 +6,7 @@
 /*   By: mogawa <mogawa@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 14:50:40 by mogawa            #+#    #+#             */
-/*   Updated: 2023/06/16 17:41:14 by mogawa           ###   ########.fr       */
+/*   Updated: 2023/06/29 18:22:16 by mogawa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,43 +112,3 @@ int	ft_atoi(const char *str)
 {
 	return ((int)ft_strtol(str, NULL, 10));
 }
-
-// int	ft_atoi(const char *str)
-// {
-// 	int			is_minus;
-// 	long		num;
-// 	const char	*s;
-// 	is_minus = 0;
-// 	s = ft_prefix_atoi(str, &is_minus, 0);
-// 	num = 0;
-// 	while (ft_isdigit(*s) && *s)
-// 	{
-// 		if (!is_minus && num > LONG_MAX / 10)
-// 			return ((int)LONG_MAX);
-// 		if (is_minus && num > LONG_MAX / 10)
-// 			return ((int)LONG_MIN);
-// 		num = num * 10;
-// 		if (!is_minus && num > LONG_MAX - (*s - '0'))
-// 			return ((int)LONG_MAX);
-// 		if (is_minus && num - 1 > LONG_MAX - (*s - '0'))
-// 			return ((int)LONG_MIN);
-// 		num = num + (*s - '0');
-// 		s++;
-// 	}
-// 	if (is_minus)
-// 		return ((int)(num * -1));
-// 	else
-// 		return ((int)num);
-// }
-// int	main(void)
-// {
-//     char *n = "0xff";
-//     long res;
-//     long res2;
-// 	char *endptr;
-// 	char *endptr1;
-//     res = ft_strtol(n, &endptr, 16);
-//     res2 = strtol(n, &endptr1, 16);
-//     printf("my=%lu\n", res);
-//     printf("pc=%lu\n", res2);
-// }
