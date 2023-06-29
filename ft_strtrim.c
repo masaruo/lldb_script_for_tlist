@@ -6,7 +6,7 @@
 /*   By: mogawa <mogawa@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 13:36:41 by mogawa            #+#    #+#             */
-/*   Updated: 2023/05/24 16:33:41 by mogawa           ###   ########.fr       */
+/*   Updated: 2023/06/16 17:30:09 by mogawa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,11 @@ static int	is_charset(char c, char const *charset)
 }
 
 /*
-引数| 文字列（char *s１）と削除対象文字群（char *set)
-戻り値| 前後から削除対象文字群が削除された新たな文字列へのポインタ
-フリー| 必要
-機能| 文字列の前後から削除対象文字群を削除
+*param1: string to trim
+*param2: charset to trim
+*return: trimmed string
+*func: trim string from both sides
+*free: required
 */
 char	*ft_strtrim(char const *s1, char const *set)
 {

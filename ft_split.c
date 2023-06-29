@@ -6,7 +6,7 @@
 /*   By: mogawa <mogawa@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 16:18:48 by mogawa            #+#    #+#             */
-/*   Updated: 2023/05/24 16:39:43 by mogawa           ###   ########.fr       */
+/*   Updated: 2023/06/09 00:47:23 by mogawa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,43 +26,25 @@ static void	ft_free_all(char **arr)
 	free(tmp);
 }
 
-static size_t	ft_cntchar(const char *s, char c)
-{
-	size_t		n;
+// static size_t	ft_cntchar(const char *s, char c)
+// {
+// 	size_t		n;
 
-	n = 0;
-	while (1)
-	{
-		if (*s != c && *s)
-		{
-			n++;
-			while (*s != c && *s)
-				s++;
-		}
-		if (*s == '\0')
-			break ;
-		s++;
-	}
-	return (n);
-}
-
-static char	*ft_strndup(const char *s1, size_t len)
-{
-	char		*res;
-	size_t		n;
-
-	res = malloc(sizeof(char) * (len + 1));
-	if (res == NULL)
-		return (NULL);
-	n = 0;
-	while (s1[n] && n < len)
-	{
-		res[n] = s1[n];
-		n++;
-	}
-	res[n] = '\0';
-	return (res);
-}
+// 	n = 0;
+// 	while (1)
+// 	{
+// 		if (*s != c && *s)
+// 		{
+// 			n++;
+// 			while (*s != c && *s)
+// 				s++;
+// 		}
+// 		if (*s == '\0')
+// 			break ;
+// 		s++;
+// 	}
+// 	return (n);
+// }
 
 // return 0 for malloc error else number 'cnt'.
 // cal how many cnt and exe strndup to add child arrs to parent arr 'res'
@@ -121,7 +103,23 @@ char	**ft_split(char const *s, char c)
 	}
 	return (res);
 }
+// static char	*ft_strndup(const char *s1, size_t len)
+// {
+// 	char		*res;
+// 	size_t		n;
 
+// 	res = malloc(sizeof(char) * (len + 1));
+// 	if (res == NULL)
+// 		return (NULL);
+// 	n = 0;
+// 	while (s1[n] && n < len)
+// 	{
+// 		res[n] = s1[n];
+// 		n++;
+// 	}
+// 	res[n] = '\0';
+// 	return (res);
+// }
 // int    main(void)
 // {
 //     char    **str;

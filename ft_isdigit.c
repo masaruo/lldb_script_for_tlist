@@ -6,7 +6,7 @@
 /*   By: mogawa <mogawa@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 06:38:04 by mogawa            #+#    #+#             */
-/*   Updated: 2023/05/24 16:47:12 by mogawa           ###   ########.fr       */
+/*   Updated: 2023/06/13 14:24:14 by mogawa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,22 @@
 int	ft_isdigit(int c)
 {
 	if ('0' <= c && c <= '9')
+		return (1);
+	else
+		return (0);
+}
+
+/*
+*param	文字C
+*return	１から９なら２、a-f & A-Fなら1、それ以外は０
+*/
+int	ft_isdigit_hex(int c, int base)
+{
+	if (ft_isdigit(c))
+		return (-1);
+	else if (base == 16 && 'A' <= c && c <= 'F')
+		return (1);
+	else if (base == 16 && 'a' <= c && c <= 'f')
 		return (1);
 	else
 		return (0);

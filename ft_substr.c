@@ -6,19 +6,17 @@
 /*   By: mogawa <mogawa@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:31:56 by mogawa            #+#    #+#             */
-/*   Updated: 2023/05/26 13:10:06 by mogawa           ###   ########.fr       */
+/*   Updated: 2023/05/24 16:37:44 by mogawa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /*
-*param		char *s				文字列
-*param		unsigned int start	スタート位置
-*param		size_t len			何文字
-*return		カットされた新たな文字列
-*free		必要
-*desc		文字列sのカット開始文字数startからlen文字数を新たな文字列として返す
+引数| 文字列（char *s）、カット開始文字数（unsigned int start)、何文字(size_t len)
+戻り値| カットされた新たな文字列
+フリー| 必要
+機能| 文字列sのカット開始文字数startからlen文字数を新たな文字列として返す
 */
 char	*ft_substr(const char *s, unsigned int start, size_t len)
 {

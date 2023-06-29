@@ -6,17 +6,18 @@
 /*   By: mogawa <mogawa@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 15:16:40 by mogawa            #+#    #+#             */
-/*   Updated: 2023/05/25 10:20:12 by mogawa           ###   ########.fr       */
+/*   Updated: 2023/06/16 17:28:52 by mogawa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /*
-引数| カウント:count＆カウントあたりのサイズ:size_t size
-戻り値| メモリー領域へのポインタ
-フリー| 必要
-機能| 0埋めしたメモリーを'size' x 'count'分確保
+*param #1: Number of elements
+*param #2: Size of elements
+*return: A pointer to allocated memory
+*func: Allocates memory and fills it with zeros
+*free: Required
 */
 void	*ft_calloc(size_t count, size_t size)
 {
@@ -24,7 +25,10 @@ void	*ft_calloc(size_t count, size_t size)
 	size_t	amount;
 
 	if (count == 0 || size == 0)
-		return (NULL);
+	{
+		count = 1;
+		size = 1;
+	}
 	if (SIZE_MAX / size < count)
 		return (NULL);
 	amount = count * size;
@@ -32,5 +36,22 @@ void	*ft_calloc(size_t count, size_t size)
 	if (heap == NULL)
 		return (NULL);
 	ft_bzero(heap, amount);
+	return (heap);
+}
+
+/*
+*param #1: Number of elements
+*param #2: Size of elements
+*return: A pointer to allocated memory
+*func: Allocates memory and fills it with zeros
+*free: Required
+*/
+void	*ft_xcalloc(size_t count, size_t size)
+{
+	void	*heap;
+
+	heap = ft_calloc(count, size);
+	if (heap == NULL)
+		return (NULL);
 	return (heap);
 }
