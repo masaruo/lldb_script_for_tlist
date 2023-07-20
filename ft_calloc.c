@@ -6,7 +6,7 @@
 /*   By: mogawa <mogawa@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 15:16:40 by mogawa            #+#    #+#             */
-/*   Updated: 2023/06/16 17:28:52 by mogawa           ###   ########.fr       */
+/*   Updated: 2023/07/20 15:23:21 by mogawa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,22 +36,5 @@ void	*ft_calloc(size_t count, size_t size)
 	if (heap == NULL)
 		return (NULL);
 	ft_bzero(heap, amount);
-	return (heap);
-}
-
-/*
-*param #1: Number of elements
-*param #2: Size of elements
-*return: A pointer to allocated memory
-*func: Allocates memory and fills it with zeros
-*free: Required
-*/
-void	*ft_xcalloc(size_t count, size_t size)
-{
-	void	*heap;
-
-	heap = ft_calloc(count, size);
-	if (heap == NULL)
-		return (NULL);
 	return (heap);
 }

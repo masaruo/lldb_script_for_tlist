@@ -6,7 +6,7 @@
 /*   By: mogawa <mogawa@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 16:40:49 by mogawa            #+#    #+#             */
-/*   Updated: 2023/06/16 17:26:17 by mogawa           ###   ########.fr       */
+/*   Updated: 2023/07/20 15:39:37 by mogawa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,6 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }	t_list;
-
-// # define GET_MAX(a, b) (a > b ? a : b)
-// # define GET_MIN(a, b) (a > b ? b : a)
-// # define GET_ABS(a) ((a) < 0 ? -(a) : (a))
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
@@ -72,18 +68,17 @@ void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 //additional functions
+long	ft_strtol(const char *str, char **endptr, int base);//ft_atoi.c
+int		ft_isspace(const char c);
 int		ft_strcmp(char *s1, char *s2);
-void	ft_xfree(void *ptr);
-void	*ft_xcalloc(size_t count, size_t size);
 char	*ft_strndup(const char *s, size_t len);
 size_t	ft_cntchar(const char *s, char c);
-int		ft_swap(int *a, int *b);
-int		ft_get_max(int a, int b);
-int		ft_get_min(int a, int b);
-int		ft_get_abs(int a);
-long	ft_strtol(const char *str, char **endptr, int base);
-// char	**ft_split_set(char const *s, char const *set);
+void	ft_free_null(void *ptr);
+int		ft_swap_int(int *a, int *b);//ft_swap
+int		ft_get_max(int a, int b);//ft_get_max_min_abs.c
+int		ft_get_min(int a, int b);//ft_get_max_min_abs.c
+int		ft_get_abs(int a);//ft_get_max_min_abs.c
 int		ft_isspace(const char c);
-int		ft_isdigit_hex(int c, int base);
+int		ft_isdigit_hex(int c);//ft_isdigit.c
 
 #endif
