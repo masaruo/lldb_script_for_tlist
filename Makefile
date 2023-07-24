@@ -6,7 +6,7 @@
 #    By: mogawa <mogawa@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/11 16:04:53 by mogawa            #+#    #+#              #
-#    Updated: 2023/07/20 15:25:48 by mogawa           ###   ########.fr        #
+#    Updated: 2023/07/24 17:41:51 by mogawa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,15 +21,14 @@ FILES		=	ft_isalpha ft_isdigit ft_isalnum ft_isascii ft_isprint ft_strlen ft_mem
 				ft_putchar_fd ft_putstr_fd ft_putendl_fd ft_putnbr_fd \
 				ft_lstnew ft_lstadd_front ft_lstsize ft_lstlast ft_lstadd_back ft_lstdelone \
 				ft_lstclear ft_lstiter ft_lstmap \
-				#Additional Functions
-				ft_strcmp ft_strndup ft_cntchar ft_free_null ft_isspace ft_swap ft_get_max_min_abs \
-				
+				ft_strcmp ft_strndup ft_cntchar ft_free_null ft_isspace ft_swap ft_get_int \
+				ft_lalloc
 SRCS_DIR	=	./
 SRCS		=	$(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES)))
 OBJS		=	$(SRCS:.c=.o)
 
 ifdef WITH_DEBUG
-CFLAGS = -Wall -g3 -O0 -fsanitize=address
+CFLAGS = -Wall -g3 -O0
 endif
 
 %.o : %.c 

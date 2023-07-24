@@ -6,13 +6,13 @@
 /*   By: mogawa <mogawa@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 16:37:52 by mogawa            #+#    #+#             */
-/*   Updated: 2023/07/20 15:31:11 by mogawa           ###   ########.fr       */
+/*   Updated: 2023/07/24 10:54:07 by mogawa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_swap_int(int *a, int *b)
+int	ft_swap(int *a, int *b)
 {
 	int	tmp;
 

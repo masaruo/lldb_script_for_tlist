@@ -6,7 +6,7 @@
 /*   By: mogawa <mogawa@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 14:50:40 by mogawa            #+#    #+#             */
-/*   Updated: 2023/06/29 18:22:16 by mogawa           ###   ########.fr       */
+/*   Updated: 2023/07/24 17:05:44 by mogawa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ long	ft_strtol(const char *str, char **endptr, int base_num)
 	is_minus = false;
 	s = ft_prefix_atoi(str, &is_minus, &base);
 	num = 0;
-	while (ft_isdigit_hex(*s, base) && *s)
+	while (ft_isdigit_hex(*s) && *s)
 	{
 		vetted_num = ft_check_overflow_atoi(is_minus, num, base, *s);
 		if (vetted_num == LONG_MAX || vetted_num == LONG_MIN)
