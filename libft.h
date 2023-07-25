@@ -6,7 +6,7 @@
 /*   By: mogawa <mogawa@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 16:40:49 by mogawa            #+#    #+#             */
-/*   Updated: 2023/07/24 18:23:07 by mogawa           ###   ########.fr       */
+/*   Updated: 2023/07/25 09:40:33 by mogawa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct s_list
 typedef struct s_mem
 {
 	void	*adr;
-	int		idx;
+	int		grp;
 }	t_mem;
 
 int		ft_isalpha(int c);
@@ -86,7 +86,7 @@ int		ft_get_min(int a, int b);//ft_get_int.c
 int		ft_get_abs(int a);//ft_get_int.c
 int		ft_isspace(const char c);
 int		ft_isdigit_hex(int c);//ft_isdigit.c
-void	*ft_lalloc(size_t count, size_t size, t_list **adrs);
+void	*ft_lcalloc(size_t count, size_t size, t_list **adrs, int grp);
 void	ft_lst_free_content(void *content);
 void	ft_lst_free(t_list *list);
 

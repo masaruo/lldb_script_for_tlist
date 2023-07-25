@@ -6,7 +6,7 @@ int main(void)
 	int		*arr;
 
 	adrs = NULL;
-	arr = ft_lalloc(5, sizeof(int), &adrs);
+	arr = ft_lcalloc(5, sizeof(int), &adrs, 0);
 printf("addr %p\n", adrs);
 	arr[0] = 0;
 	arr[1] = 1;

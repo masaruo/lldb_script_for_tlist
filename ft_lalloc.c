@@ -6,7 +6,7 @@
 /*   By: mogawa <mogawa@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 10:56:22 by mogawa            #+#    #+#             */
-/*   Updated: 2023/07/24 18:28:33 by mogawa           ###   ########.fr       */
+/*   Updated: 2023/07/25 09:42:34 by mogawa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,30 @@ void	ft_lst_free(t_list *list)
 *			address is stored to adrs linked list
 *free:		Required
 */
-void	*ft_lalloc(size_t count, size_t size, t_list **adrs)
+void	*ft_lcalloc(size_t count, size_t size, t_list **adrs, int grp)
 {
-	void	*heap;
 	t_list	*elem;
+	t_mem	*mem;
 
-	heap = ft_calloc(count, size);
-	if (!heap)
+	mem = ft_calloc(1, sizeof(t_mem));
+	if (!mem)
+	{
+		//todo free all
+		return (NULL);
+	}
+	mem->adr = ft_calloc(count, size);
+	if (!mem->adr)
 	{
 		//todo free adrs
 		return (NULL);
 	}
-	elem = ft_lstnew(heap);
+	mem->grp = grp;
+	elem = ft_lstnew(mem);
+	if (!elem)
+	{
+		// todo free all
+		return (NULL);
+	}
 	if (*adrs == NULL)
 	{
 		*adrs = elem;
@@ -53,5 +65,5 @@ void	*ft_lalloc(size_t count, size_t size, t_list **adrs)
 	{
 		ft_lstadd_back(adrs, elem);
 	}
-	return (heap);
+	return (mem->adr);
 }
