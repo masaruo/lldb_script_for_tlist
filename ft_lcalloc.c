@@ -6,7 +6,7 @@
 /*   By: mogawa <mogawa@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 10:56:22 by mogawa            #+#    #+#             */
-/*   Updated: 2023/07/25 20:57:49 by mogawa           ###   ########.fr       */
+/*   Updated: 2023/07/25 21:02:34 by mogawa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	ft_lfree_content(void *content)
 	heap = (t_mem *) content;
 	free (heap->adr);
 	heap->adr = NULL;
-	free (content);
+	free (heap);
 	content = NULL;
 }
 

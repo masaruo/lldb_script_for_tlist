@@ -6,7 +6,7 @@
 /*   By: mogawa <mogawa@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 16:40:49 by mogawa            #+#    #+#             */
-/*   Updated: 2023/07/25 20:57:13 by mogawa           ###   ########.fr       */
+/*   Updated: 2023/07/25 20:59:50 by mogawa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
-//*** lcalloc related
+//*** lcalloc & lfree
 # define FREE_ALL -1
 
 typedef struct s_mem
@@ -32,7 +32,7 @@ typedef struct s_mem
 	void	*adr;
 	int		grp;
 }	t_mem;
-// *** end
+//*** END
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
