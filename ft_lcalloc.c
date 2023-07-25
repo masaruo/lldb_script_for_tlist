@@ -1,62 +1,73 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lalloc.c                                        :+:      :+:    :+:   */
+/*   ft_lcalloc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mogawa <mogawa@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 10:56:22 by mogawa            #+#    #+#             */
-/*   Updated: 2023/07/25 15:19:39 by mogawa           ###   ########.fr       */
+/*   Updated: 2023/07/25 17:44:41 by mogawa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lst_free_content(void *content)
+void	ft_lfree_content(void *content)
 {
 	t_mem	*heap;
 
 	heap = (t_mem *) content;
 	free (heap->adr);
+	heap->adr = NULL;
 	free (content);
+	content = NULL;
 }
 
-void	ft_lst_free(t_list **list)
+static void	ft_lfree_loop(t_list **head, int grp, void (*del)(void*))
 {
-	ft_lstclear(list, ft_lst_free_content);
+	t_list	*crnt;
+	t_list	*prev;
+	t_list	*tmp;
+	t_mem	*heap;
+
+	prev = NULL;
+	crnt = *head;
+	while (crnt != NULL)
+	{
+		tmp = crnt->next;
+		heap = (t_mem *) crnt->next;
+		if (heap->grp == grp)
+		{
+			if (prev == NULL)
+				*head = crnt->next;
+			else
+				prev->next = crnt->next;
+			ft_lstdelone(crnt, del);
+		}
+		else
+			prev = crnt;
+		crnt = tmp;
+	}
 }
 
 /*
 *param #1:	lcallocで確保されたメモリーアドレスのリスト
-*param #2:	メモリーの指定グループ。−１(FREE_ALL)で全部のリストを削除
+*param #2:	メモリーの指定グループ。"FREE_ALL"で全部のリストを削除
+*param #3:	contentをフリーする関数ポインタ。コンテンツ自体と
+*			ヒープのアドレスだけの場合は"ft_free_content"を使用
 *return:	なし
 *func:		確保されたリクンクドリストのメモリー領域をフリー
 *free:		なし
 */
-void	ft_lfree(t_list **head, int grp)
+void	ft_lfree(t_list **head, int grp, void (*del)(void*))
 {
-	t_list	*crnt;
-	t_list	*prev;
-	t_mem	*heap;
-
-	prev = *head;
-	crnt = prev->next;
-	if (grp == FREE_ALL || prev->next == NULL)
-		ft_lst_free(head);
+	if (grp == FREE_ALL)
+	{
+		ft_lstclear(head, del);
+	}
 	else
 	{
-		while (crnt != NULL)
-		{
-			heap = (t_mem *) crnt->content;
-			if (heap->grp == grp)
-			{
-				prev->next = crnt->next;
-				ft_lstdelone(crnt, ft_lst_free_content);
-			}
-			crnt = crnt->next;
-		}
-		if (ft_lstsize(*head) == 1)
-			ft_lst_free(head);
+		ft_lfree_loop(head, grp, del);
 	}
 }
 
@@ -82,8 +93,8 @@ static t_mem	*ft_get_tmem_struct(size_t count, size_t size, int grp)
 /*
 *param #1:	エレメント数
 *param #2:	各エレメントのサイズS
-*param #3:	確保されたメモリーの住所を格納する
-			リンクリスト。何もない場合はNULLを指して渡す
+*param #3:	確保されたメモリーの住所を格納するリンクリスト。
+*			初期化の場合はNULLポインターとして渡す
 *return:	確保された領域へのポインタ
 *func:		Allocates memory and fills it with zeros
 *			address is stored to adrs linked list
@@ -100,7 +111,8 @@ void	*ft_lcalloc(size_t count, size_t size, t_list **adrs, int grp)
 	elem = ft_lstnew(mem);
 	if (!elem)
 	{
-		//todo free
+		free(mem->adr);
+		free(mem);
 		return (NULL);
 	}
 	ft_lstadd_back(adrs, elem);
