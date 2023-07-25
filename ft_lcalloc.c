@@ -6,13 +6,13 @@
 /*   By: mogawa <mogawa@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 10:56:22 by mogawa            #+#    #+#             */
-/*   Updated: 2023/07/25 17:44:41 by mogawa           ###   ########.fr       */
+/*   Updated: 2023/07/25 20:57:49 by mogawa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lfree_content(void *content)
+static void	ft_lfree_content(void *content)
 {
 	t_mem	*heap;
 
@@ -23,7 +23,7 @@ void	ft_lfree_content(void *content)
 	content = NULL;
 }
 
-static void	ft_lfree_loop(t_list **head, int grp, void (*del)(void*))
+static void	ft_lfree_loop(t_list **head, int grp)
 {
 	t_list	*crnt;
 	t_list	*prev;
@@ -35,14 +35,14 @@ static void	ft_lfree_loop(t_list **head, int grp, void (*del)(void*))
 	while (crnt != NULL)
 	{
 		tmp = crnt->next;
-		heap = (t_mem *) crnt->next;
+		heap = (t_mem *) crnt->content;
 		if (heap->grp == grp)
 		{
 			if (prev == NULL)
 				*head = crnt->next;
 			else
 				prev->next = crnt->next;
-			ft_lstdelone(crnt, del);
+			ft_lstdelone(crnt, ft_lfree_content);
 		}
 		else
 			prev = crnt;
@@ -53,21 +53,19 @@ static void	ft_lfree_loop(t_list **head, int grp, void (*del)(void*))
 /*
 *param #1:	lcallocで確保されたメモリーアドレスのリスト
 *param #2:	メモリーの指定グループ。"FREE_ALL"で全部のリストを削除
-*param #3:	contentをフリーする関数ポインタ。コンテンツ自体と
-*			ヒープのアドレスだけの場合は"ft_free_content"を使用
 *return:	なし
 *func:		確保されたリクンクドリストのメモリー領域をフリー
 *free:		なし
 */
-void	ft_lfree(t_list **head, int grp, void (*del)(void*))
+void	ft_lfree(t_list **head, int grp)
 {
 	if (grp == FREE_ALL)
 	{
-		ft_lstclear(head, del);
+		ft_lstclear(head, ft_lfree_content);
 	}
 	else
 	{
-		ft_lfree_loop(head, grp, del);
+		ft_lfree_loop(head, grp);
 	}
 }
 

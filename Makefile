@@ -6,7 +6,7 @@
 #    By: mogawa <mogawa@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/11 16:04:53 by mogawa            #+#    #+#              #
-#    Updated: 2023/07/25 17:30:45 by mogawa           ###   ########.fr        #
+#    Updated: 2023/07/25 20:52:28 by mogawa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,10 @@ ifdef WITH_DEBUG
 CFLAGS = -Wall -g3 -O0
 endif
 
+ifdef WITH_ASAN
+CFLAGS = -Wall -g3 -O0 -fsanitize=address
+endif
+
 %.o : %.c 
 	$(CC) $(CFLAGS) -c -o $@ $<
 
@@ -39,6 +43,9 @@ $(NAME): $(OBJS)
 
 debug: fclean
 	make $(NAME) WITH_DEBUG=1
+
+asan: fclean
+	make $(NAME) WITH_ASAN=1
 
 all: $(NAME)
 

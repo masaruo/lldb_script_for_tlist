@@ -6,7 +6,7 @@
 /*   By: mogawa <mogawa@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 16:40:49 by mogawa            #+#    #+#             */
-/*   Updated: 2023/07/25 17:58:59 by mogawa           ###   ########.fr       */
+/*   Updated: 2023/07/25 20:57:13 by mogawa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-//additional functions
+//*additional functions
 long	ft_strtol(const char *str, char **endptr, int base);//ft_atoi.c
 int		ft_isspace(const char c);
 int		ft_strcmp(char *s1, char *s2);
@@ -90,9 +90,8 @@ int		ft_get_min(int a, int b);//ft_get_int.c
 int		ft_get_abs(int a);//ft_get_int.c
 int		ft_isspace(const char c);
 int		ft_isdigit_hex(int c);//ft_isdigit.c
-//ft_lcalloc.c
+//*ft_lcalloc.c
 void	*ft_lcalloc(size_t count, size_t size, t_list **adrs, int grp);
-void	ft_lfree(t_list **head, int grp, void (*del)(void*));
-void	ft_lfree_content(void *content);
+void	ft_lfree(t_list **head, int grp);
 
 #endif
