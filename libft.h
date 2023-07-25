@@ -6,7 +6,7 @@
 /*   By: mogawa <mogawa@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 16:40:49 by mogawa            #+#    #+#             */
-/*   Updated: 2023/07/25 09:40:33 by mogawa           ###   ########.fr       */
+/*   Updated: 2023/07/25 12:58:29 by mogawa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
+//*** lcalloc related
+# define FREE_ALL -1
 typedef struct s_mem
 {
 	void	*adr;
@@ -88,6 +90,6 @@ int		ft_isspace(const char c);
 int		ft_isdigit_hex(int c);//ft_isdigit.c
 void	*ft_lcalloc(size_t count, size_t size, t_list **adrs, int grp);
 void	ft_lst_free_content(void *content);
-void	ft_lst_free(t_list *list);
-
+void	ft_lst_free(t_list **list);
+void	ft_lfree(t_list **adrs, int grp);
 #endif
