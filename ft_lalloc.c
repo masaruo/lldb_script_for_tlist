@@ -6,7 +6,7 @@
 /*   By: mogawa <mogawa@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 10:56:22 by mogawa            #+#    #+#             */
-/*   Updated: 2023/07/25 13:05:45 by mogawa           ###   ########.fr       */
+/*   Updated: 2023/07/25 13:21:10 by mogawa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,13 +95,6 @@ void	*ft_lcalloc(size_t count, size_t size, t_list **adrs, int grp)
 	elem = ft_lstnew(mem);
 	if (!elem)
 		return (NULL);
-	if (adrs == NULL)
-	{
-		*adrs = elem;
-	}
-	else
-	{
-		ft_lstadd_back(adrs, elem);
-	}
+	ft_lstadd_back(adrs, elem);
 	return (mem->adr);
 }
