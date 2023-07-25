@@ -6,7 +6,7 @@
 /*   By: mogawa <mogawa@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 09:22:38 by mogawa            #+#    #+#             */
-/*   Updated: 2023/07/24 17:50:34 by mogawa           ###   ########.fr       */
+/*   Updated: 2023/07/25 15:02:50 by mogawa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,5 @@ void	ft_lstclear(t_list **lst, void (*del)(void*))
 		crnt = crnt->next;
 		ft_lstdelone(prev, del);
 	}
-	printf("%p\n",lst);
 	*lst = NULL;
 }
