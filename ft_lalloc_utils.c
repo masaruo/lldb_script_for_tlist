@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   ft_lalloc_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mogawa <mogawa@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/19 09:22:38 by mogawa            #+#    #+#             */
-/*   Updated: 2023/07/26 11:39:45 by mogawa           ###   ########.fr       */
+/*   Created: 2023/07/26 11:55:20 by mogawa            #+#    #+#             */
+/*   Updated: 2023/07/26 14:55:20 by mogawa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-// del then free the elem incl all childs and ptr to the list to NULL
-void	ft_lstclear(t_list **lst, void (*del)(void*))
+t_list	*ft_lalloc_init(void)
 {
-	t_list	*crnt;
-	t_list	*prev;
+	t_list	*head;
 
-	if (!lst || !*lst || !del)
-		return ;
-	crnt = *lst;
-	while (crnt != NULL)
-	{	
-		prev = crnt;
-		crnt = crnt->next;
-		ft_lstdelone(prev, del);
-	}
-	*lst = NULL;
+	head = ft_lstnew(NULL);
+	if (head == NULL)
+		return (NULL);
+	return (head);
+}
+
+void	ft_lalloc_destroy(t_list *head)
+{
+	ft_lfree(&head, ALL);
+	free(head);
+	head = NULL;
 }

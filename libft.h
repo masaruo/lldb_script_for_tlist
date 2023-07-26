@@ -6,7 +6,7 @@
 /*   By: mogawa <mogawa@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 16:40:49 by mogawa            #+#    #+#             */
-/*   Updated: 2023/07/25 23:40:48 by mogawa           ###   ########.fr       */
+/*   Updated: 2023/07/26 14:58:39 by mogawa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,16 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
-//*** lcalloc & lfree
+//* lcalloc & lfree related
 # define ALL -1
-# define INIT -1
 
 typedef struct s_mem
 {
 	void	*adr;
 	int		grp;
 }	t_mem;
-//*** END
 
+//* prototypes
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
 int		ft_isalnum(int c);
@@ -91,8 +90,13 @@ int		ft_get_min(int a, int b);//ft_get_int.c
 int		ft_get_abs(int a);//ft_get_int.c
 int		ft_isspace(const char c);
 int		ft_isdigit_hex(int c);//ft_isdigit.c
-//*ft_lcalloc.c
-void	*ft_lcalloc(size_t count, size_t size, t_list **adrs, int grp);
+//* ft_lcalloc.c & ft_lalloc_utils.c
+void	*ft_lalloc(size_t count, size_t size, t_list **head, int grp);
 void	ft_lfree(t_list **head, int grp);
+t_list	*ft_lalloc_init(void);
+void	ft_lalloc_destroy(t_list *head);
+//* ft_lstcalloc.c
+void	*ft_lstcalloc(size_t count, size_t size, t_list **head);
+void	ft_free_lstcalloc(t_list **head);
 
 #endif
