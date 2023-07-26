@@ -20,9 +20,8 @@ void test(void)
 	int		*arr2;
 	char	*str;
 
-	head = NULL;
-	arr = ft_lcalloc(5, sizeof(int), &head, 0);
-// printf("addr %p\n", adrs);
+	// head = NULL;
+	arr = ft_lcalloc(5, sizeof(int), &head, INIT);
 	arr[0] = 0;
 	arr[1] = 1;
 	arr[2] = 2;
@@ -45,7 +44,8 @@ void test(void)
 	ft_lfree(&head, 2);
 	// ft_lfree(&head, FREE_ALL);
 	printf("lstsize:%d\n", ft_lstsize(head));
-	printf("addr %p\n", head);
+	// printf("addr %p\n", head);
+	// ft_lfree(&head, ALL);
 	return ;
 }
 
@@ -55,8 +55,8 @@ void	test_struct(void)
 	t_test	*test;
 	t_list	*head;
 
-	head = NULL;
-	indata = ft_lcalloc(1, sizeof(t_inner), &head, 5);
+	// head = NULL;
+	indata = ft_lcalloc(1, sizeof(t_inner), &head, 0);
 	indata->in_char_arr = ft_lcalloc(3, sizeof(char), &head, 0);
 	indata->in_char_arr[0] = 'h';
 	indata->in_char_arr[1] = 'i';
@@ -92,13 +92,13 @@ void	test_struct(void)
 	ft_lfree(&head, 3);
 	ft_lfree(&head, 4);
 	ft_lfree(&head, 5);
-	ft_lfree(&head, FREE_ALL);
+	ft_lfree(&head, ALL);
 	printf("listNum=%d\n", ft_lstsize(head));
 }
 
 int main (void)
 {
-	// test();
+	test();
 	test_struct();
 	system("leaks -q a.out");
 	return (0);

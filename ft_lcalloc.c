@@ -6,7 +6,7 @@
 /*   By: mogawa <mogawa@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 10:56:22 by mogawa            #+#    #+#             */
-/*   Updated: 2023/07/25 21:02:34 by mogawa           ###   ########.fr       */
+/*   Updated: 2023/07/25 23:40:57 by mogawa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,14 @@ static void	ft_lfree_loop(t_list **head, int grp)
 
 /*
 *param #1:	lcallocで確保されたメモリーアドレスのリスト
-*param #2:	メモリーの指定グループ。"FREE_ALL"で全部のリストを削除
+*param #2:	削除するメモリーグループの指定「 ALL 」で全部のリストを削除
 *return:	なし
-*func:		確保されたリクンクドリストのメモリー領域をフリー
+*func:		heapに確保されたメモリー領域をフリー
 *free:		なし
 */
 void	ft_lfree(t_list **head, int grp)
 {
-	if (grp == FREE_ALL)
+	if (grp == ALL)
 	{
 		ft_lstclear(head, ft_lfree_content);
 	}
@@ -90,9 +90,10 @@ static t_mem	*ft_get_tmem_struct(size_t count, size_t size, int grp)
 
 /*
 *param #1:	エレメント数
-*param #2:	各エレメントのサイズS
-*param #3:	確保されたメモリーの住所を格納するリンクリスト。
-*			初期化の場合はNULLポインターとして渡す
+*param #2:	各エレメントのサイズ
+*param #3:	確保されたメモリーの住所を格納するリンクリスト
+*			初期化の場合は「 INIT 」を指定
+*			INITで確保された領域のグループ番号は自動で０となる
 *return:	確保された領域へのポインタ
 *func:		Allocates memory and fills it with zeros
 *			address is stored to adrs linked list
@@ -103,6 +104,11 @@ void	*ft_lcalloc(size_t count, size_t size, t_list **adrs, int grp)
 	t_list	*elem;
 	t_mem	*mem;
 
+	if (grp == INIT)
+	{
+		grp = 0;
+		*adrs = NULL;
+	}
 	mem = ft_get_tmem_struct(count, size, grp);
 	if (!mem)
 		return (NULL);

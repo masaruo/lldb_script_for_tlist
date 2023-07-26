@@ -6,7 +6,7 @@
 /*   By: mogawa <mogawa@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 16:40:49 by mogawa            #+#    #+#             */
-/*   Updated: 2023/07/25 20:59:50 by mogawa           ###   ########.fr       */
+/*   Updated: 2023/07/25 23:40:48 by mogawa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ typedef struct s_list
 }	t_list;
 
 //*** lcalloc & lfree
-# define FREE_ALL -1
+# define ALL -1
+# define INIT -1
 
 typedef struct s_mem
 {
