@@ -6,7 +6,7 @@
 /*   By: mogawa <mogawa@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 16:40:49 by mogawa            #+#    #+#             */
-/*   Updated: 2023/07/26 22:24:18 by mogawa           ###   ########.fr       */
+/*   Updated: 2023/08/03 16:14:03 by mogawa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,6 @@ int		ft_swap(int *a, int *b);
 int		ft_get_max(int a, int b);//ft_get_int.c
 int		ft_get_min(int a, int b);//ft_get_int.c
 int		ft_get_abs(int a);//ft_get_int.c
-int		ft_isspace(const char c);
 int		ft_isdigit_hex(int c);//ft_isdigit.c
 //* ft_lcalloc.c & ft_lalloc_utils.c
 void	*ft_lalloc(size_t count, size_t size, t_list **head, int grp);

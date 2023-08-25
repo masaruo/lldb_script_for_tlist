@@ -6,7 +6,7 @@
 /*   By: mogawa <mogawa@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 12:57:24 by mogawa            #+#    #+#             */
-/*   Updated: 2023/07/27 21:05:14 by mogawa           ###   ########.fr       */
+/*   Updated: 2023/08/18 15:57:30 by mogawa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,7 @@ void	*ft_lstcalloc(size_t count, size_t size, t_list **head)
 // 	for (int i = 0; i < 3; i++)
 // 		printf("test_intarr:%d\n", test->int_arr[i]);
 // 	printf("size in test struct1= %d\n", ft_lstsize(*head));
-// 	ft_free_lstcalloc(head);
+// 	// ft_free_lstcalloc(head);
 // 	printf("size in test struct2= %d\n", ft_lstsize(*head));
 // }
 

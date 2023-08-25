@@ -6,7 +6,7 @@
 /*   By: mogawa <mogawa@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 15:17:27 by mogawa            #+#    #+#             */
-/*   Updated: 2023/07/24 17:06:31 by mogawa           ###   ########.fr       */
+/*   Updated: 2023/08/18 15:59:14 by mogawa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,18 @@
 
 char	*ft_strndup(const char *s, size_t len)
 {
-	char	*res;
+	char	*heap_str;
 	size_t	n;
 
-	res = ft_calloc(len + 1, sizeof(char));
+	heap_str = ft_calloc(len + 1, sizeof(char));
+	if (!heap_str)
+		return (NULL);
 	n = 0;
 	while (n < len)
 	{
-		res[n] = s[n];
+		heap_str[n] = s[n];
 		n++;
 	}
-	res[n] = '\0';
-	return (res);
+	heap_str[n] = '\0';
+	return (heap_str);
 }
