@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mogawa <mogawa@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/20 15:16:21 by mogawa            #+#    #+#             */
-/*   Updated: 2023/07/20 15:17:09 by mogawa           ###   ########.fr       */
+/*   Created: 2023/01/18 18:55:26 by mogawa            #+#    #+#             */
+/*   Updated: 2023/09/05 16:36:37 by mogawa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strcmp(char *s1, char *s2)
+// alloc & rtn a new node of the list
+t_list	*ft_lstnew(void *content)
 {
-	int	s1len;
-	int	s2len;
-	int	len;
+	t_list	*lst;
 
-	s1len = ft_strlen(s1);
-	s2len = ft_strlen(s2);
-	if (s1len <= s2len)
-		len = s1len;
-	else
-		len = s2len;
-	return (ft_strncmp(s1, s2, len));
+	lst = ft_calloc(1, sizeof(t_list));
+	if (lst == NULL)
+		return (NULL);
+	lst->content = content;
+	lst->prev = NULL;
+	lst->next = NULL;
+	return (lst);
 }

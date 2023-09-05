@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mogawa <mogawa@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/18 20:46:30 by mogawa            #+#    #+#             */
-/*   Updated: 2023/01/20 17:23:53 by mogawa           ###   ########.fr       */
+/*   Created: 2023/07/20 15:16:21 by mogawa            #+#    #+#             */
+/*   Updated: 2023/09/05 17:46:14 by mogawa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-// add a elem 'new' at the end of the lst.
-void	ft_lstadd_back(t_list **lst, t_list *new)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	t_list	*last;
+	size_t				i;
+	const unsigned char	*str1 = (const unsigned char *) s1;
+	const unsigned char	*str2 = (const unsigned char *) s2;
 
-	if (!lst || !new)
-		return ;
-	if (*lst == NULL)
-		*lst = new;
-	else
+	i = 0;
+	while (true)
 	{
-		last = ft_lstlast(*lst);
-		last->next = new;
+		if (str1[i] == '\0' || str2[i] == '\0')
+			return ((int)(str1[i] - str2[i]));
+		if (str1[i] != str2[i])
+			return ((int)(str1[i] - str2[i]));
+		i++;
 	}
+	return (0);
 }
