@@ -6,7 +6,7 @@
 #    By: mogawa <mogawa@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/11 16:04:53 by mogawa            #+#    #+#              #
-#    Updated: 2023/09/05 17:29:13 by mogawa           ###   ########.fr        #
+#    Updated: 2023/10/17 15:48:10 by mogawa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ FILES		=	ft_isalpha ft_isdigit ft_isalnum ft_isascii ft_isprint ft_strlen ft_mem
 				ft_putchar_fd ft_putstr_fd ft_putendl_fd ft_putnbr_fd \
 				ft_lstnew ft_lstadd_front ft_lstsize ft_lstlast ft_lstadd_back ft_lstdelone \
 				ft_lstclear ft_lstiter ft_lstmap \
-				ft_strcmp ft_strndup ft_cntchar ft_free_null ft_isspace ft_swap ft_get_int \
+				ft_strcmp ft_cntchar ft_free_null ft_isspace ft_swap ft_get_int \
 				ft_lalloc ft_lalloc_utils ft_lstcalloc
 SRCS_DIR	=	./src/
 OBJS_DIR	=	./obj/
