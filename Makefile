@@ -6,14 +6,14 @@
 #    By: mogawa <mogawa@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/11 16:04:53 by mogawa            #+#    #+#              #
-#    Updated: 2023/10/17 15:48:10 by mogawa           ###   ########.fr        #
+#    Updated: 2023/12/13 10:28:15 by mogawa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	libft.a
-CFLAGS		=	-Wall -Wextra -Werror
-AR			=	ar rcs
-FILES		=	ft_isalpha ft_isdigit ft_isalnum ft_isascii ft_isprint ft_strlen ft_memset \
+NAME		:=	libft.a
+CFLAGS		:=	-Wall -Wextra -Werror -MMD -MP
+AR			:=	ar rcs
+FILES		:=	ft_isalpha ft_isdigit ft_isalnum ft_isascii ft_isprint ft_strlen ft_memset \
 				ft_bzero ft_memcpy ft_memmove ft_strlcpy ft_toupper ft_tolower ft_strlcat \
 				ft_strchr ft_strrchr ft_strncmp ft_memchr ft_memcmp ft_strnstr ft_atoi \
 				ft_calloc ft_strdup \
@@ -23,22 +23,23 @@ FILES		=	ft_isalpha ft_isdigit ft_isalnum ft_isascii ft_isprint ft_strlen ft_mem
 				ft_lstclear ft_lstiter ft_lstmap \
 				ft_strcmp ft_cntchar ft_free_null ft_isspace ft_swap ft_get_int \
 				ft_lalloc ft_lalloc_utils ft_lstcalloc
-SRCS_DIR	=	./src/
-OBJS_DIR	=	./obj/
-INC_DIR		=	./include
-SRCS		=	$(addsuffix .c, $(FILES))
-OBJS		=	$(addprefix $(OBJS_DIR), $(SRCS:.c=.o))
+SRCS_DIR	:=	./src/
+OBJS_DIR	:=	./obj/
+INC_DIR		:=	./include
+SRCS		:=	$(addsuffix .c, $(FILES))
+OBJS		:=	$(addprefix $(OBJS_DIR), $(SRCS:.c=.o))
+DEPS		:=	$(SRCS:%.c=$(OBJS_DIR)%.d)
 
 ifdef WITH_DEBUG
-CFLAGS = -Wall -g3 -O0
+CFLAGS := -Wall -Wextra -g3 -O0
 endif
 
 ifdef WITH_ASAN
-CFLAGS = -Wall -g3 -O0 -fsanitize=address
+CFLAGS := -Wall -Wextra -g3 -O0 -fsanitize=address
 endif
 
 $(OBJS_DIR)%.o : $(SRCS_DIR)%.c 
-	mkdir -p $(OBJS_DIR)
+	@mkdir -p $(OBJS_DIR)
 	$(CC) $(CFLAGS) -I$(INC_DIR) -c -o $@ $<
 
 $(NAME): $(OBJS)
@@ -56,15 +57,16 @@ asan: fclean
 all: $(NAME)
 
 clean:
-	rm -rf $(OBJS_DIR)
-	$(RM) $(OBJS)
+	$(RM) -r $(OBJS_DIR)
 
 fclean: clean
 	$(RM) $(NAME)
 
 re: fclean all
 
-.PHONY: debug all clean fclean re
+-include $(DEPS)
+
+.PHONY: all clean fclean re debug asan
 
 
 
